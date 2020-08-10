@@ -1,8 +1,10 @@
-package com.hasan.shoppingcart;
+package com.hasan.shoppingcart.views.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.hasan.shoppingcart.R;
 
 public class MainActivity extends AppCompatActivity {
 
