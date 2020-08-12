@@ -24,7 +24,7 @@ public class ShopRepo {
     private void loadProducts() {
         List<Product> productList = new ArrayList<>();
 
-        //Here you use retrofit or room DB we
+        //Here you use retrofit or room DB
 
         mutableProductList.setValue(productList);
     }
