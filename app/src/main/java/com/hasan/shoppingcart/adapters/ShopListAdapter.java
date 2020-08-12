@@ -30,6 +30,9 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
     @Override
     public void onBindViewHolder(@NonNull ShopViewHolder holder, int position) {
 
+        Product product = getItem(position);
+        holder.shopRowBinding.setProduct(product);
+
     }
 
     public class ShopViewHolder extends RecyclerView.ViewHolder {
