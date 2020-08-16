@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:productImage="@{product.imageUrl}"
+            />
 
         <TextView
             android:id="@+id/productNameTV"

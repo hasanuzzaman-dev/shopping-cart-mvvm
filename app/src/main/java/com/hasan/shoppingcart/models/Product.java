@@ -1,7 +1,12 @@
 package com.hasan.shoppingcart.models;
 
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.DiffUtil;
+
+import com.bumptech.glide.Glide;
 
 import java.util.Objects;
 
@@ -99,4 +104,12 @@ public class Product {
             return false;
         }
     };
+
+    @BindingAdapter("android:productImage")
+    public static void loadImage(ImageView imageView, String imgUrl){
+        Glide.with(imageView)
+                .load(imgUrl)
+                .fitCenter()
+                .into(imageView);
+    }
 }
