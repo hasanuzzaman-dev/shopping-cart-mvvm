@@ -6,6 +6,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.view.Menu;
 
 import com.hasan.shoppingcart.R;
 
@@ -21,5 +22,11 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this,R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this,navController);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
     }
 }
