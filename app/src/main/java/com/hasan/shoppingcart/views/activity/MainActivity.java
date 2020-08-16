@@ -26,15 +26,29 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Handle back Btn
+    @Override
+    public boolean onSupportNavigateUp() {
+        navController.navigateUp();
+        return super.onSupportNavigateUp();
+    }
+
+    // Add Item Menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
     }
 
+    // Item Menu clickable
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        /*
         NavigationUI.onNavDestinationSelected(item,navController);
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);*/
+
+        // Or
+        return NavigationUI.onNavDestinationSelected(item,navController) || super.onOptionsItemSelected(item);
+
     }
 }
