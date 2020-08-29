@@ -44,7 +44,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        shopListAdapter = new ShopListAdapter();
+        shopListAdapter = new ShopListAdapter(this);
         fragmentShopBinding.shopRecyclerViewId.setAdapter(shopListAdapter);
         fragmentShopBinding.shopRecyclerViewId.addItemDecoration(new DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL));
         fragmentShopBinding.shopRecyclerViewId.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL));

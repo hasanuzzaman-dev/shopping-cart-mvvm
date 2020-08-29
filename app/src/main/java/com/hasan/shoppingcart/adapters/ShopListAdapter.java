@@ -14,8 +14,10 @@ import com.hasan.shoppingcart.models.Product;
 
 public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopViewHolder> {
 
-    public ShopListAdapter() {
+    ShopInterface shopInterface;
+    public ShopListAdapter(ShopInterface shopInterface) {
         super(Product.itemCallback);
+        this.shopInterface = shopInterface;
     }
 
     @NonNull
@@ -41,6 +43,17 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
         public ShopViewHolder(ShopRowBinding shopRowBinding) {
             super(shopRowBinding.getRoot());
             this.shopRowBinding = shopRowBinding;
+
+         /*
+         //but we do this in the shop_row
+            this.shopRowBinding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+        */
+
         }
     }
 
