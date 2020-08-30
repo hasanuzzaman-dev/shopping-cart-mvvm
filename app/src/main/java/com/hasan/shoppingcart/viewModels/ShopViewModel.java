@@ -22,4 +22,9 @@ public class ShopViewModel  extends ViewModel {
     public void setProduct(Product product){
         productMutableLiveData.setValue(product);
     }
+
+    //get product to product details fragment
+    public LiveData<Product> getProduct(){
+        return productMutableLiveData;
+    }
 }
