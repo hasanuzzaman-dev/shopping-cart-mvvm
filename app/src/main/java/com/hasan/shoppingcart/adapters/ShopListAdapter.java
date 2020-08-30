@@ -15,6 +15,7 @@ import com.hasan.shoppingcart.models.Product;
 public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopViewHolder> {
 
     ShopInterface shopInterface;
+
     public ShopListAdapter(ShopInterface shopInterface) {
         super(Product.itemCallback);
         this.shopInterface = shopInterface;
@@ -25,7 +26,7 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
     public ShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        ShopRowBinding shopRowBinding = ShopRowBinding.inflate(layoutInflater,parent,false);
+        ShopRowBinding shopRowBinding = ShopRowBinding.inflate(layoutInflater, parent, false);
         shopRowBinding.setShopInterface(shopInterface);
         return new ShopViewHolder(shopRowBinding);
     }
@@ -41,12 +42,13 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
     public class ShopViewHolder extends RecyclerView.ViewHolder {
 
         ShopRowBinding shopRowBinding;
+
         public ShopViewHolder(ShopRowBinding shopRowBinding) {
             super(shopRowBinding.getRoot());
             this.shopRowBinding = shopRowBinding;
 
+            //but we do this in the shop_row
          /*
-         //but we do this in the shop_row
             this.shopRowBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -58,8 +60,9 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
         }
     }
 
-    public interface ShopInterface{
+    public interface ShopInterface {
         void addItem(Product product);
+
         void onItemClick(Product product);
     }
 }
