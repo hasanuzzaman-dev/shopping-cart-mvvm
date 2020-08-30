@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="shopViewModel"
             type="com.hasan.shoppingcart.viewModels.ShopViewModel" />
@@ -25,9 +26,9 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_gravity="center"
-                tools:src="@tools:sample/avatars"
                 android:productImage="@{shopViewModel.product.imageUrl}"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                tools:src="@tools:sample/avatars" />
 
             <Space
                 android:layout_width="match_parent"
@@ -38,10 +39,9 @@
                 android:id="@+id/productNameTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                tools:text="iPhone 11"
                 android:text="@{shopViewModel.product.name}"
-                />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                tools:text="iPhone 11" />
 
             <Space
                 android:layout_width="match_parent"
@@ -51,10 +51,9 @@
                 android:id="@+id/priceTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                tools:text="649 $"
                 android:text="@{String.valueOf(shopViewModel.product.price) + ` $`}"
-                />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="649 $" />
 
             <Space
                 android:layout_width="match_parent"
@@ -64,11 +63,10 @@
                 android:id="@+id/availableTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{shopViewModel.product.available ? `Available` : `Out of Stock`}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
                 android:textColor="@{shopViewModel.product.available ? @color/colorPrimary : @color/red}"
-                tools:text="Available / Out of Stock"
-                android:text="@{shopViewModel.product.available ? `Available` : `Out of Stock`}"
-                />
+                tools:text="Available / Out of Stock" />
 
             <Space
                 android:layout_width="match_parent"
@@ -77,15 +75,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:text="@string/description" />
+                android:text="@string/description"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
 
             <TextView
                 android:id="@+id/descriptionTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-               android:text="@string/descriptionText" />
+                android:textColor="@color/textColorSecondary"
+                android:text="@string/descriptionText"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
 
             <Space
                 android:layout_width="match_parent"
