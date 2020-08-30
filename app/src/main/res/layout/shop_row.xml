@@ -4,15 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="product"
             type="com.hasan.shoppingcart.models.Product" />
+
+        <variable
+            name="shopInterface"
+            type="com.hasan.shoppingcart.adapters.ShopListAdapter.ShopInterface" />
 
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> shopInterface.onItemClick(product)}"
         android:orientation="vertical">
 
         <ImageView
@@ -20,10 +27,9 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            tools:srcCompat="@tools:sample/avatars"
             android:productImage="@{product.imageUrl}"
-            />
+            android:scaleType="fitCenter"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/productNameTV"
@@ -31,17 +37,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@{product.name}"
-            tools:text="iPhone 11"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="iPhone 11" />
 
         <TextView
             android:id="@+id/priceTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            tools:text="649 $"
             android:text="@{String.valueOf(product.price)+ ` $`}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            tools:text="649 $" />
 
         <TextView
             android:id="@+id/availableTV"
@@ -49,19 +55,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@{product.available ? `Available` : `Out of Stock`}"
-            tools:text="Available"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimary"
+            tools:text="Available" />
 
         <Button
             android:id="@+id/addToCartBtn"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="Add to cart"
-            android:enabled="@{product.available}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:enabled="@{product.available}"
+            android:text="Add to cart"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
 
             />
 

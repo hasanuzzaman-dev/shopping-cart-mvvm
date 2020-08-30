@@ -26,6 +26,7 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ShopRowBinding shopRowBinding = ShopRowBinding.inflate(layoutInflater,parent,false);
+        shopRowBinding.setShopInterface(shopInterface);
         return new ShopViewHolder(shopRowBinding);
     }
 

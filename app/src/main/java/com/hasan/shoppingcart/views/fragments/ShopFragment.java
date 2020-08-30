@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     FragmentShopBinding fragmentShopBinding;
     private ShopListAdapter shopListAdapter;
     private ShopViewModel shopViewModel;
+    private static final String TAG = "ShopFragment";
 
     public ShopFragment() {
         // Required empty public constructor
@@ -66,6 +68,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
 
     @Override
     public void onItemClick(Product product) {
+        Log.d(TAG, "onItemClick: "+ product.toString());
 
     }
 }
