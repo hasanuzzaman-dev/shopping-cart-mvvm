@@ -70,6 +70,8 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void addItem(Product product) {
 
         Log.d(TAG, "addItem: "+product.toString());
+        boolean isAdded = shopViewModel.addItemToCart(product);
+        Log.d(TAG, "addItem: "+product.getName() +" " + isAdded);
 
     }
 

@@ -36,4 +36,11 @@ public class ShopViewModel  extends ViewModel {
     public LiveData<List<CartItem>> getCart(){
         return cartRepo.getCart();
     }
+
+    //observe live data from CartRepo addProductToCart
+    public boolean addItemToCart(Product product){
+        return cartRepo.addItemToCart(product);
+    }
+
+
 }
