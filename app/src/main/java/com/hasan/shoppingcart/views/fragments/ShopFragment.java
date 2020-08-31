@@ -69,6 +69,8 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     @Override
     public void addItem(Product product) {
 
+        Log.d(TAG, "addItem: "+product.toString());
+
     }
 
     @Override

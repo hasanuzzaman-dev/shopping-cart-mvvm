@@ -66,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:enabled="@{product.available}"
+            android:onClick="@{() -> shopInterface.addItem(product)}"
             android:text="Add to cart"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
 
