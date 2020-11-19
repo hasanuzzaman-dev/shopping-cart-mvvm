@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.hasan.shoppingcart.R;
 import com.hasan.shoppingcart.adapters.ShopListAdapter;
 import com.hasan.shoppingcart.databinding.FragmentShopBinding;
@@ -69,9 +70,21 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     @Override
     public void addItem(Product product) {
 
-        Log.d(TAG, "addItem: "+product.toString());
         boolean isAdded = shopViewModel.addItemToCart(product);
         Log.d(TAG, "addItem: "+product.getName() +" " + isAdded);
+
+        if (isAdded){
+            Snackbar.make(requireView(),product.getName()+" added to cart.", Snackbar.LENGTH_LONG)
+                    .setAction("Checkout", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            navController.navigate(R.id.action_shopFragment_to_cartFragment2);
+                        }
+                    }).show();
+        }else {
+            Snackbar.make(requireView()," Already have the max quantity in cart.", Snackbar.LENGTH_LONG).show();
+        }
+
 
     }
 
