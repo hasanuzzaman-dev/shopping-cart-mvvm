@@ -36,6 +36,7 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
 
         Product product = getItem(position);
         holder.shopRowBinding.setProduct(product);
+        holder.shopRowBinding.executePendingBindings();
 
     }
 

@@ -1,5 +1,11 @@
 package com.hasan.shoppingcart.models;
 
+import android.widget.Spinner;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.DiffUtil;
+
 public class CartItem {
     private Product product;
     private int quantity;
@@ -41,6 +47,24 @@ public class CartItem {
         return getQuantity() == cartItem.getQuantity() &&
                 getProduct().equals(cartItem.getProduct());
     }
+
+    @BindingAdapter("android:setSpinnerValue")
+    public static void getSelectedSpinnerValue(Spinner spinner, int quantity) {
+        spinner.setSelection(quantity - 1, true);
+    }
+
+
+    public static DiffUtil.ItemCallback<CartItem> itemCallback = new DiffUtil.ItemCallback<CartItem>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull CartItem oldItem, @NonNull CartItem newItem) {
+            return oldItem.getProduct().equals(newItem.getProduct());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull CartItem oldItem, @NonNull CartItem newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 
 
 }

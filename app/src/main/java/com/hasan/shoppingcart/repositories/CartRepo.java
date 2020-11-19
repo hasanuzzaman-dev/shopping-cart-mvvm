@@ -33,6 +33,7 @@ public class CartRepo {
         }
 
         Log.d(TAG, "addItemToCart: "+mutableCart.getValue());
+
         List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
         CartItem cartItem = new CartItem(product, 1);
         cartItemList.add(cartItem);
