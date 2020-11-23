@@ -14,9 +14,12 @@ import com.hasan.shoppingcart.models.CartItem;
 
 public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartViewHolder> {
 
+    private CartInterface cartInterface;
 
-    public CartListAdapter() {
+
+    public CartListAdapter(CartInterface cartInterface) {
         super(CartItem.itemCallback);
+        this.cartInterface = cartInterface;
     }
 
     @NonNull
@@ -44,6 +47,17 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
         public CartViewHolder(@NonNull CartRowBinding cartRowBinding) {
             super(cartRowBinding.getRoot());
             this.cartRowBinding = cartRowBinding;
+
+            cartRowBinding.deleteProductButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cartInterface.deleteItem(getItem(getAdapterPosition()));
+                }
+            });
         }
+    }
+
+    public interface CartInterface{
+        void deleteItem(CartItem cartItem);
     }
 }

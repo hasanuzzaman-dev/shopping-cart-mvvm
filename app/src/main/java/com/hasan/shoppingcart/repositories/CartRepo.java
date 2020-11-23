@@ -58,4 +58,14 @@ public class CartRepo {
 
         return true;
     }
+
+    public void removeItemFromCart(CartItem cartItem){
+        if (mutableCart.getValue() == null){
+            return;
+        }
+
+        List<CartItem> cartItemList = new ArrayList<>(mutableCart.getValue());
+        cartItemList.remove(cartItem);
+        mutableCart.setValue(cartItemList);
+    }
 }

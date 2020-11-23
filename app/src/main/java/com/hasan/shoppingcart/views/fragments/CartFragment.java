@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import com.hasan.shoppingcart.viewModels.ShopViewModel;
 import java.util.List;
 
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartListAdapter.CartInterface {
 
     private static final String TAG = "CartFragment";
     private ShopViewModel shopViewModel;
@@ -48,7 +49,7 @@ public class CartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final CartListAdapter cartListAdapter = new CartListAdapter();
+        final CartListAdapter cartListAdapter = new CartListAdapter(this);
 
         fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
 
@@ -62,5 +63,11 @@ public class CartFragment extends Fragment {
                 cartListAdapter.submitList(cartItems);
             }
         });
+    }
+
+    @Override
+    public void deleteItem(CartItem cartItem) {
+        Log.d(TAG, "deleteItem: "+ cartItem.getProduct().getName());
+        shopViewModel.removeItemFromCart(cartItem);
     }
 }

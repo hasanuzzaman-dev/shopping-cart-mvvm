@@ -42,5 +42,9 @@ public class ShopViewModel  extends ViewModel {
         return cartRepo.addItemToCart(product);
     }
 
+    public void removeItemFromCart(CartItem cartItem){
+        cartRepo.removeItemFromCart(cartItem);
+    }
+
 
 }
