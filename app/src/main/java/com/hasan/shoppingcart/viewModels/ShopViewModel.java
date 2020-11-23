@@ -43,7 +43,11 @@ public class ShopViewModel  extends ViewModel {
     }
 
     public void removeItemFromCart(CartItem cartItem){
-        cartRepo.removeItemFromCart(cartItem);
+       cartRepo.removeItemFromCart(cartItem);
+    }
+
+    public void changeQuantity(CartItem cartItem, int quantity){
+        cartRepo.changeQuantity(cartItem,quantity);
     }
 
 

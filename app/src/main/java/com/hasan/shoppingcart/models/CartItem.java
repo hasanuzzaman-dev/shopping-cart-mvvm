@@ -43,9 +43,9 @@ public class CartItem {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
+
         CartItem cartItem = (CartItem) obj;
-        return getQuantity() == cartItem.getQuantity() &&
-                getProduct().equals(cartItem.getProduct());
+        return getQuantity() == cartItem.getQuantity() && getProduct().equals(cartItem.getProduct());
     }
 
     @BindingAdapter("android:setSpinnerValue")
@@ -57,7 +57,8 @@ public class CartItem {
     public static DiffUtil.ItemCallback<CartItem> itemCallback = new DiffUtil.ItemCallback<CartItem>() {
         @Override
         public boolean areItemsTheSame(@NonNull CartItem oldItem, @NonNull CartItem newItem) {
-            return oldItem.getProduct().equals(newItem.getProduct());
+            //return oldItem.getProduct().equals(newItem.getProduct());
+            return oldItem.getQuantity() == newItem.getQuantity();
         }
 
         @Override

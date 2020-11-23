@@ -70,4 +70,10 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
         Log.d(TAG, "deleteItem: "+ cartItem.getProduct().getName());
         shopViewModel.removeItemFromCart(cartItem);
     }
+
+    @Override
+    public void changeQuantity(CartItem cartItem, int quantity) {
+
+        shopViewModel.changeQuantity(cartItem,quantity);
+    }
 }
