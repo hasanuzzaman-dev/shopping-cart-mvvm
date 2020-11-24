@@ -56,7 +56,7 @@
             android:layout_gravity="center"
             android:text="@{product.available ? `Available` : `Out of Stock`}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@{product.available ? @color/colorPrimaryDark : @color/red}"
             tools:text="Available" />
 
         <Button

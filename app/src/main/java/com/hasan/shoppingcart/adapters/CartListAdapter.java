@@ -60,7 +60,7 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                     int quantity = position + 1;
-                    if (quantity == getItem(getAdapterPosition()).getQuantity()){
+                    if (quantity == getItem(getAdapterPosition()).getQuantity()) {
                         return;
                     }
 
@@ -76,8 +76,9 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
         }
     }
 
-    public interface CartInterface{
+    public interface CartInterface {
         void deleteItem(CartItem cartItem);
+
         void changeQuantity(CartItem cartItem, int quantity);
     }
 }

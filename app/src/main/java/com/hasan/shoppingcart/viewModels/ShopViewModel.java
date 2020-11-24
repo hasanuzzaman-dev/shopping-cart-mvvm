@@ -11,7 +11,7 @@ import com.hasan.shoppingcart.repositories.ShopRepo;
 
 import java.util.List;
 
-public class ShopViewModel  extends ViewModel {
+public class ShopViewModel extends ViewModel {
 
     ShopRepo shopRepo = new ShopRepo();
     CartRepo cartRepo = new CartRepo();
@@ -19,39 +19,44 @@ public class ShopViewModel  extends ViewModel {
     MutableLiveData<Product> productMutableLiveData = new MutableLiveData<>();
 
     //observe live data from ShopRepo
-    public LiveData<List<Product>> getProducts(){
+    public LiveData<List<Product>> getProducts() {
         return shopRepo.getProducts();
     }
 
-    public void setProduct(Product product){
+    public void setProduct(Product product) {
         productMutableLiveData.setValue(product);
     }
 
     //get product for product details fragment
-    public LiveData<Product> getProduct(){
+    public LiveData<Product> getProduct() {
         return productMutableLiveData;
     }
 
     //observe live data from CartRepo
-    public LiveData<List<CartItem>> getCart(){
+    public LiveData<List<CartItem>> getCart() {
         return cartRepo.getCart();
     }
 
     //observe live data from CartRepo addProductToCart
-    public boolean addItemToCart(Product product){
+    public boolean addItemToCart(Product product) {
         return cartRepo.addItemToCart(product);
     }
 
-    public void removeItemFromCart(CartItem cartItem){
-       cartRepo.removeItemFromCart(cartItem);
+    public void removeItemFromCart(CartItem cartItem) {
+        cartRepo.removeItemFromCart(cartItem);
     }
 
-    public void changeQuantity(CartItem cartItem, int quantity){
-        cartRepo.changeQuantity(cartItem,quantity);
+    public void changeQuantity(CartItem cartItem, int quantity) {
+        cartRepo.changeQuantity(cartItem, quantity);
     }
 
-    public LiveData<Double> getTotalPrice(){
-        return  cartRepo.getTotalPrice();
+    public LiveData<Double> getTotalPrice() {
+        return cartRepo.getTotalPrice();
+    }
+
+    public void resetCart() {
+        cartRepo.initCart();
+
     }
 
 

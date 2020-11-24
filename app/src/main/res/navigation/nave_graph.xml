@@ -48,5 +48,6 @@
         <action
             android:id="@+id/action_orderFragment_to_shopFragment"
             app:destination="@id/shopFragment" />
+
     </fragment>
 </navigation>

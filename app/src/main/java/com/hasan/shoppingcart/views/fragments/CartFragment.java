@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.util.Log;
@@ -28,6 +30,7 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     private static final String TAG = "CartFragment";
     private ShopViewModel shopViewModel;
     private FragmentCartBinding fragmentCartBinding;
+    private NavController navController;
 
 
 
@@ -49,6 +52,8 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
+
         final CartListAdapter cartListAdapter = new CartListAdapter(this);
 
         fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
@@ -61,6 +66,9 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
             public void onChanged(List<CartItem> cartItems) {
 
                 cartListAdapter.submitList(cartItems);
+
+                // enable or disable button
+                fragmentCartBinding.placeOrderButton.setEnabled(cartItems.size() > 0);
             }
         });
 
@@ -69,6 +77,13 @@ public class CartFragment extends Fragment implements CartListAdapter.CartInterf
             public void onChanged(Double totalPrice) {
                 fragmentCartBinding.orderTotalTextView.setText("Total: $"+totalPrice.toString());
 
+            }
+        });
+
+        fragmentCartBinding.placeOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_cartFragment_to_orderFragment2);
             }
         });
     }
